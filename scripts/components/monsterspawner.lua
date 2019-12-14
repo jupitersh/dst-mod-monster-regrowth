@@ -15,6 +15,7 @@ local prefabs = {
 	"knight",
 	"bishop",
 	"rook",
+	"catcoonden",
 }
 
 local tilefns = {}
@@ -30,6 +31,8 @@ tilefns.lightninggoat = function(tile) return (tile == GROUND.DIRT or tile == GR
 tilefns.knight = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.FOREST or tile == GROUND.MARSH or tile == GROUND.GRASS or tile == GROUND.SAVANNA or tile == GROUND.DIRT or tile == GROUND.DECIDUOUS or tile == GROUND.DESERT_DIRT) end
 tilefns.bishop = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.FOREST or tile == GROUND.MARSH or tile == GROUND.GRASS or tile == GROUND.SAVANNA or tile == GROUND.DIRT or tile == GROUND.DECIDUOUS or tile == GROUND.DESERT_DIRT) end
 tilefns.rook = function(tile) return (tile == GROUND.ROCKY or tile == GROUND.FOREST or tile == GROUND.MARSH or tile == GROUND.GRASS or tile == GROUND.SAVANNA or tile == GROUND.DIRT or tile == GROUND.DECIDUOUS or tile == GROUND.DESERT_DIRT) end
+tilefns.catcoonden = function(tile) return (tile == GROUND.DECIDUOUS) end
+
 
 function c_countprefabsonground(prefab, noprint)
 	local count = 0
@@ -63,7 +66,7 @@ local function TrySpawn(strfab)
 end
 
 local function wasphive_spawner()
-		local min_num = TUNING.wasphive
+		local min_num = TUNING.MG.wasphive
 		local count = c_countprefabsonground("wasphive", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -74,7 +77,7 @@ local function wasphive_spawner()
 end
 
 local function houndmound_spawner()
-		local min_num = TUNING.houndmound
+		local min_num = TUNING.MG.houndmound
 		local count = c_countprefabsonground("houndmound", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -85,7 +88,7 @@ local function houndmound_spawner()
 end
 
 local function pighouse_spawner()
-		local min_num = TUNING.pighouse
+		local min_num = TUNING.MG.pighouse
 		local count = c_countprefabsonground("pighouse", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -96,7 +99,7 @@ local function pighouse_spawner()
 end
 
 local function mermhouse_spawner()
-		local min_num = TUNING.mermhouse
+		local min_num = TUNING.MG.mermhouse
 		local count = c_countprefabsonground("mermhouse", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -107,7 +110,7 @@ local function mermhouse_spawner()
 end
 
 local function spiderden_spawner()
-		local min_num = TUNING.spiderden
+		local min_num = TUNING.MG.spiderden
 		local count = c_countprefabsonground("spiderden", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -118,7 +121,7 @@ local function spiderden_spawner()
 end
 
 local function tallbirdnest_spawner()
-		local min_num = TUNING.tallbirdnest
+		local min_num = TUNING.MG.tallbirdnest
 		local count = c_countprefabsonground("tallbirdnest", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -129,7 +132,7 @@ local function tallbirdnest_spawner()
 end
 
 local function tentacle_spawner()
-		local min_num = TUNING.tentacle
+		local min_num = TUNING.MG.tentacle
 		local count = c_countprefabsonground("tentacle", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -140,7 +143,7 @@ local function tentacle_spawner()
 end
 
 local function beefalo_spawner()
-		local min_num = TUNING.beefalo
+		local min_num = TUNING.MG.beefalo
 		local count = c_countprefabsonground("beefalo", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -151,7 +154,7 @@ local function beefalo_spawner()
 end
 
 local function lightninggoat_spawner()
-		local min_num = TUNING.lightninggoat
+		local min_num = TUNING.MG.lightninggoat
 		local count = c_countprefabsonground("lightninggoat", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -162,7 +165,7 @@ local function lightninggoat_spawner()
 end
 
 local function knight_spawner()
-		local min_num = TUNING.knight
+		local min_num = TUNING.MG.knight
 		local count = c_countprefabsonground("knight", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -173,7 +176,7 @@ local function knight_spawner()
 end
 
 local function bishop_spawner()
-		local min_num = TUNING.bishop
+		local min_num = TUNING.MG.bishop
 		local count = c_countprefabsonground("bishop", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
@@ -184,12 +187,23 @@ local function bishop_spawner()
 end
 
 local function rook_spawner()
-		local min_num = TUNING.rook
+		local min_num = TUNING.MG.rook
 		local count = c_countprefabsonground("rook", true)
 		local numtospawn = min_num - count
 		if numtospawn > 0 then
 			for i = 1, numtospawn, 1 do
 				TrySpawn("rook")
+			end
+		end
+end
+
+local function catcoonden_spawner()
+		local min_num = TUNING.MG.catcoonden
+		local count = c_countprefabsonground("catcoonden", true)
+		local numtospawn = min_num - count
+		if numtospawn > 0 then
+			for i = 1, numtospawn, 1 do
+				TrySpawn("catcoonden")
 			end
 		end
 end
@@ -212,6 +226,7 @@ local MonsterSpawner = Class(function(self, inst)
 			knight_spawner()
 			bishop_spawner()
 			rook_spawner()
+			catcoonden_spawner()
 		else
 			print("!!!Monster Regrowth: It's Not the Time!!!")
 		end

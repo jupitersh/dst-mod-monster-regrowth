@@ -1,7 +1,7 @@
 name = "Monster Regrowth"
 description = ""
 author = ""
-version = "1.0"
+version = "1.1"
 
 forumthread = ""
 
@@ -38,15 +38,16 @@ local function AddCount(name, label, df)
 	}
 end
 
-AddCount("wasphive", "Wasphive", 100)
-AddCount("houndmound", "Houndmound", 100)
-AddCount("pighouse", "Pighouse", 50)
-AddCount("mermhouse", "Mermhouse", 100)
-AddCount("spiderden", "Spiderden", 100)
-AddCount("tallbirdnest", "Tallbirdnest", 100)
-AddCount("tentacle", "Tentacle", 400)
+AddCount("wasphive", "Wasphive", 20)
+AddCount("houndmound", "Houndmound", 20)
+AddCount("pighouse", "Pighouse", 20)
+AddCount("mermhouse", "Mermhouse", 20)
+AddCount("spiderden", "Spiderden", 50)
+AddCount("tallbirdnest", "Tallbirdnest", 20)
+AddCount("tentacle", "Tentacle", 300)
 AddCount("beefalo", "Beefalo", 15)
 AddCount("lightninggoat", "Lightninggoat", 10)
-AddCount("knight", "Knight", 100)
-AddCount("bishop", "Bishop", 100)
-AddCount("rook", "Rook", 100)
+AddCount("knight", "Knight", 15)
+AddCount("bishop", "Bishop", 15)
+AddCount("rook", "Rook", 15)
+AddCount("catcoonden", "Catcoon Den", 10)
