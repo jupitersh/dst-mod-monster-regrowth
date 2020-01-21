@@ -53,7 +53,9 @@ end
 local function TrySpawn(strfab)
 	local pt = Vector3(math.random(-1000, 1000), 0, math.random(-1000, 1000))
 	local tile = TheWorld.Map:GetTileAtPoint(pt.x, pt.y, pt.z)
-	local canspawn = tile ~= GROUND.IMPASSABLE and tile ~= GROUND.INVALID and tile ~= 255
+	local canspawn = tile == GROUND.ROAD or tile == GROUND.ROAD or tile == GROUND.ROCKY or tile == GROUND.DIRT or tile == GROUND.SAVANNA or tile == GROUND.GRASS 
+        or tile == GROUND.FOREST or tile == GROUND.MARSH or tile == GROUND.WOODFLOOR or tile == GROUND.CARPET or tile == GROUND.CHECKER or tile == GROUND.DECIDUOUS
+        or tile == GROUND.DESERT_DIRT or tile == GROUND.SCALE or tile == GROUND.METEOR or tile == GROUND.PEBBLEBEACH
 	local tilecheck = tilefns[strfab]
 	canspawn = canspawn and tilecheck(tile)
 	if canspawn then
